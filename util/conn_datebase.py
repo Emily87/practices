@@ -19,11 +19,8 @@ class DB(Database):
 if __name__ == '__main__':
    db1 = DB('sqlite:///automall.sqlite')
    db2 = DB('sqlite:///automall.sqlite')
-   # db1 = DB('mysql://root:Dian@131@10.27.15.131/mall?charset=utf8')
-   # db2 = DB('mysql://root:Dian@131@10.27.15.131/mall?charset=utf8')
-   print(id(db1),id(db2))
+   print(id(db1),id(db2))  #同一个id
    # db = DB('mysql://user:password@ip/database?charset=utf8')
-   # db = DB('mysql://root:Dian@131@10.27.15.131/mall?charset=utf8')
    # rows = db.query("select * from dso_provider ")
    # for row in rows:
    #    #print(type(row))
@@ -59,17 +56,6 @@ if __name__ == '__main__':
 
 
 
-# db = DB('mysql://user:password@ip/database?charset=utf8')
-#
-# rows = db.query("select * from provider  ")
-# for row in rows:
-#    print(type(row))
-#    print(row.provider_id,type(row.provider_id))
-
-# db = records.Database(r'sqlite://automall.sqlite/')
-# rows = db.query("select * from city  ")
-# for row in rows:
-#    print(row.city_id)
 
 
 

@@ -19,7 +19,7 @@ class DB(Database):
 if __name__ == '__main__':
    db1 = DB('sqlite:///automall.sqlite')
    db2 = DB('sqlite:///automall.sqlite')
-   print(id(db1),id(db2))  #同一个id
+   print(id(db1),id(db2))  #同一个id 同一个连接
    # db = DB('mysql://user:password@ip/database?charset=utf8')
    # rows = db.query("select * from dso_provider ")
    # for row in rows:

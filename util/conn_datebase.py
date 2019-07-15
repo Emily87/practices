@@ -5,6 +5,11 @@ class DB(Database):
       super().__init__(db_url=db_url, **kwargs)
       self.is_sqlite = db_url.startswith('sqlite')
 
+   def __new__(cls, *args, **kwargs):
+      if not hasattr(DB, "_instance"):  # 反射
+         DB._instance = object.__new__(cls)
+      return DB._instance
+
    def query(self, query, fetchall=False, **params):
       if self.is_sqlite:
          conn = self.get_connection()
@@ -12,21 +17,27 @@ class DB(Database):
       return super().query(query, fetchall, **params)
 
 if __name__ == '__main__':
+   db1 = DB('sqlite:///automall.sqlite')
+   db2 = DB('sqlite:///automall.sqlite')
+   # db1 = DB('mysql://root:Dian@131@10.27.15.131/mall?charset=utf8')
+   # db2 = DB('mysql://root:Dian@131@10.27.15.131/mall?charset=utf8')
+   print(id(db1),id(db2))
    # db = DB('mysql://user:password@ip/database?charset=utf8')
+   # db = DB('mysql://root:Dian@131@10.27.15.131/mall?charset=utf8')
    # rows = db.query("select * from dso_provider ")
    # for row in rows:
    #    #print(type(row))
    #    print(row.provider_id,type(row.provider_id))
-   db = DB('sqlite:///automall.sqlite')
-   rows = db.query("select * from city ")
-   row =rows[0]
-   print(row)
-   print(row.keys)
-   print(row.values)
-   print(row[1])
-   print(row["city_id"])
-   print("---")
-   print(row.as_dict())
+   # db = DB('sqlite:///automall.sqlite')
+   # rows = db.query("select * from city ")
+   # row =rows[0]
+   # print(row)
+   # print(row.keys)
+   # print(row.values)
+   # print(row[1])
+   # print(row["city_id"])
+   # print("---")
+   # print(row.as_dict())
 
    # r = db.query("select * from city ").all()
    # #print(r)

@@ -59,9 +59,9 @@ if __name__ == '__main__':
 
 
 
-# db = records.Database('mysql://root:Dian@131@10.27.15.131/mall?charset=utf8')
+# db = DB('mysql://user:password@ip/database?charset=utf8')
 #
-# rows = db.query("select * from dso_provider  ")
+# rows = db.query("select * from provider  ")
 # for row in rows:
 #    print(type(row))
 #    print(row.provider_id,type(row.provider_id))
